@@ -21,8 +21,11 @@ jobs:
     - name: Add arm7 toolchain
       run: rustup target add armv7-unknown-linux-gnueabihf
       
-    - name: Add compiler
+    - name: Add C compiler
       run: sudo apt-get install gcc-arm-linux-gnueabihf -y
+      
+    - name: Add C++ compiler
+      run: sudo apt-get install g++-arm-linux-gnueabihf -y
     
     - name: Install FLTK Deps
       run: sudo apt-get install libx11-dev libxext-dev libxft-dev libxinerama-dev libxcursor-dev libxrender-dev libxfixes-dev libpango1.0-dev libgl1-mesa-dev libglu1-mesa-dev -y
