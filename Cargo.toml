@@ -1,0 +1,8 @@
+[package]
+name = "fltk-test"
+version = "0.1.0"
+authors = ["duanebester <bester.duane@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+fltk = { version = "^0.16", features = ["fltk-bundled"] }
