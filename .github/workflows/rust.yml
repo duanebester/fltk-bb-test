@@ -15,16 +15,25 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Install Rustup
+      run: curl https://sh.rustup.rs -sSf | sh
+      
+    - name: Add arm7 toolchain
+      run: rustup target add armv7-unknown-linux-gnueabihf
+      
+    - name: Add compiler
+      run: sudo apt-get install gcc-4.7-multilib-arm-linux-gnueabihf
+    
     - name: Install FLTK Deps
       run: sudo apt-get install libx11-dev libxext-dev libxft-dev libxinerama-dev libxcursor-dev libxrender-dev libxfixes-dev libpango1.0-dev libgl1-mesa-dev libglu1-mesa-dev
       
     - name: Build
-      run: cargo build --verbose --release
+      run: cargo build --verbose --release --target=armv7-unknown-linux-gnueabihf
       
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
         automatic_release_tag: latest
-        title: "Development Build"
-        files: target/release/fltk-test
+        title: "Development ARM Build"
+        files: target/armv7-unknown-linux-gnueabihf/release/fltk-test
