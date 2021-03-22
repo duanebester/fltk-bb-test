@@ -27,4 +27,4 @@ jobs:
         prerelease: false
         automatic_release_tag: latest
         title: "Development Build"
-        files: target/release/fltk-*
+        files: target/release/fltk-test
